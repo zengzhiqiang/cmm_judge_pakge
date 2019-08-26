@@ -10,6 +10,7 @@ def judge_test_data(stand_data, up_tol, low_tol, test_data):
     2、数据不满足要求："NO", 和一个记录错误数据位置的列表。
     3、数据满足要求，但上公差或者下公差为"/"或者标准值为"/" 或者上公差，下公差同时为"/": "/"
     '''
+    #print(stand_data)
     err_data = {}
     if stand_data == "/" or (up_tol == "/" and low_tol == "/"):
         '''
@@ -69,8 +70,10 @@ def judge_a_workbook(file_path, file):
     title_name = re.search(r'20\d\d[-]\d\d[-]\d\d\d', file).group()
     for sheet_name in sheet_names:
         table = work_book.sheet_by_name(sheet_name)
+        #print(table)
         report_name_data = table.row_values(1)
         name_match = False
+        #print(report_name_data)
         for report_name_datum in report_name_data:
             report_name = re.search(r'20\d\d[-]\d\d[-]\d\d\d', report_name_datum)
             if report_name and report_name.group() == title_name:
