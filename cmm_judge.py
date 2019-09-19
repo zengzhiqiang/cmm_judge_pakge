@@ -49,8 +49,8 @@ def judge_test_dataum(stand_data, test_data, up_tol=10000, low_tol=10000):
     err_data = {}
     for test_dataum in test_data:
         i += 1
+        #print(stand_data, up_tol, low_tol, test_dataum)
         if test_dataum >= stand_data - low_tol and test_dataum <= stand_data + up_tol:
-            #print(stand_data, up_tol, low_tol, test_dataum)
             pass
         else:
             status = False
@@ -148,5 +148,5 @@ if __name__ == "__main__":
             pass
         else:
             print("该文件夹下没有报告，命名错误？！")
-            print("按任意键继续")
+        print("\n\n完成！按任意键继续。。。")
         input()
