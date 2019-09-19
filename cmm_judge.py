@@ -48,11 +48,11 @@ def judge_test_dataum(stand_data, test_data, up_tol=10000, low_tol=10000):
     i = 0
     err_data = {}
     for test_dataum in test_data:
+        i += 1
         if test_dataum >= stand_data - low_tol and test_dataum <= stand_data + up_tol:
             #print(stand_data, up_tol, low_tol, test_dataum)
             pass
         else:
-            i += 1
             status = False
             err_data.update({i: test_dataum})
             #print(err_data)
@@ -103,7 +103,11 @@ def judge_a_workbook(file_path, file):
                     if table.cell(row, col).value and table.cell(row, col).value != "/":
                             test_datums = str(table.cell(row, col).value).split("、")
                             for test_datum in test_datums:
-                                test_data.append(float(test_datum))
+                                try:
+                                    float(test_datum)
+                                    test_data.append(float(test_datum))
+                                except:
+                                    print("第" + str(data[0]) + "行，检测数据格式有误。检测数据是否存在“/”，分割符使用错误，数字与数字之间无“、”等")
                 result, err_data = judge_test_data(stand, up_tol, low_tol, test_data)
                 if result == judge:
                     pass
