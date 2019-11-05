@@ -124,7 +124,7 @@ def judge_a_workbook(file_path, file):
                         print("第" + str(k) + "个数值为：" + str(err_datum) + "，超差！")
     return work_book_statu
 
-if __name__ == "__main__":
+def cmm_judge():
     while True:
         files = []
         count = False  #记录是否有报告
@@ -150,3 +150,7 @@ if __name__ == "__main__":
             print("该文件夹下没有报告，命名错误？！")
         print("\n\n完成！按任意键继续。。。")
         input()
+
+
+if __name__ == "__main__":
+    cmm_judge()
